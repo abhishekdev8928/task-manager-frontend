@@ -35,7 +35,7 @@ const UpdateClient = () => {
     const fetchClient = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/client/getclientByid/${id}`
+          `${process.env.REACT_APP_API_BASE_URL}/api/client/getclientByid/${id}`
         );
         const res_data = await response.json();
 
@@ -81,7 +81,7 @@ const UpdateClient = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/client/updateclient/${id}`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/client/updateclient/${id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
