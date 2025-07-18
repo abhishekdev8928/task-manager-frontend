@@ -27,7 +27,8 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("otpemail");
     localStorage.removeItem("authUser");
       localStorage.removeItem("adminid");
-
+     localStorage.removeItem("role");
+          localStorage.removeItem("adminname");
     try {
       await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/auth/logout`, {
         method: "POST",

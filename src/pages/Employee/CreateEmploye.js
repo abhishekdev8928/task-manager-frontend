@@ -24,6 +24,7 @@ const CreateEmploye = () => {
     name: "",
     email: "",
     role: "",
+    emp_id: "",
   });
   const handleinput = (e) => {
     let name = e.target.name;
@@ -83,6 +84,7 @@ const CreateEmploye = () => {
           name: "",
           email: "",
           role: "",
+          emp_id: "",
         });
       } catch (error) {
         console.log("Add Features", error);
@@ -113,8 +115,31 @@ const CreateEmploye = () => {
     }
   };
 
+  const fetchemployeecode = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/employee/generateCode`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const res_data = await response.json();
+      console.log("Fetched Employee Code:", res_data.empCode);
+
+      setemployee((prev) => ({
+        ...prev,
+        emp_id: res_data.empCode,
+      }));
+    } catch (error) {
+      console.error("Error fetching employee code:", error);
+    }
+  };
+
   useEffect(() => {
     fetchOptions();
+    fetchemployeecode();
   }, []);
 
   return (
@@ -128,6 +153,25 @@ const CreateEmploye = () => {
                 <CardBody>
                   <form className="needs-validation" onSubmit={handleaddsubmit}>
                     <Row>
+                      <Col md="6">
+                        <div className="mb-3">
+                          <Label
+                            className="form-label"
+                            htmlFor="validationCustom01"
+                          >
+                            Employee Id (eg.DHEMP0 your code)
+                          </Label>
+                          <Input
+                            value={employee.emp_id || ""}
+                            onChange={handleinput}
+                            name="emp_id"
+                            placeholder="Employee Code"
+                            type="text"
+                            className="form-control"
+                            id="validationCustom01"
+                          />
+                        </div>
+                      </Col>
                       <Col md="6">
                         <div className="mb-3">
                           <Label

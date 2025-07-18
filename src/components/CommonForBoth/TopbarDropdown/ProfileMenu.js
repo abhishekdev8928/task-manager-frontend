@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { useAuth } from "../../../store/auth";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const ProfileMenu = () => {
   const { LogoutUser } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
-
+ const [adminName, setAdminName] = useState("");
   const toggle = () => setMenu(!menu);
 
   const handleLogout = async () => {
@@ -19,19 +19,34 @@ const ProfileMenu = () => {
     navigate("/login");
   };
 
-  let username = "Admin";
   const authUser = localStorage.getItem("authUser");
   if (authUser) {
     const obj = JSON.parse(authUser);
     const uNm = obj.email.split("@")[0];
-    username = uNm.charAt(0).toUpperCase() + uNm.slice(1);
   }
 
+ useEffect(() => {
+    const adminId = localStorage.getItem("adminid");
+
+    if (adminId) {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/employee/getemployeeByid/${adminId}`)
+        .then(response => response.json())
+       .then(data => {
+  console.log("Admin Name:", data.msg.name); // ✅ Correct
+  setAdminName(data.msg.name);
+  localStorage.setItem("adminname", data.msg.name);
+})
+        .catch(error => {
+          console.error("Error fetching admin name:", error);
+        });
+    }
+  }, []);
+  
   return (
     <Dropdown isOpen={menu} toggle={toggle} className="d-inline-block user-dropdown">
       <DropdownToggle tag="button" className="btn header-item waves-effect" id="page-header-user-dropdown">
         <img className="rounded-circle header-profile-user me-1" src={avatar2} alt="Header Avatar" />
-        <span className="d-none d-xl-inline-block ms-1 text-transform">{username}</span>
+        <span className="d-none d-xl-inline-block ms-1 text-transform">{adminName}</span>
         <i className="mdi mdi-chevron-down d-none ms-1 d-xl-inline-block"></i>
       </DropdownToggle>
       <DropdownMenu className="dropdown-menu-end">

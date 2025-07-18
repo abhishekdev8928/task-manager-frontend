@@ -21,6 +21,7 @@ const UpdateEmploye = () => {
     name: "",
     email: "",
     role: "",
+    emp_id: "",
   });
   const [optionscat, setOptions] = useState([]);
   const [errors, setErrors] = useState({});
@@ -44,6 +45,7 @@ const UpdateEmploye = () => {
             name: packageData.name || "",
             email: packageData.email || "",
             role: packageData.role || "",
+            emp_id: packageData.emp_id || "",
           });
         } else {
           toast.error("Employee not found");
@@ -147,6 +149,25 @@ const UpdateEmploye = () => {
                   onSubmit={handleUpdateSubmit}
                 >
                   <Row>
+                    <Col md="6">
+                      <div className="mb-3">
+                        <Label
+                          className="form-label"
+                          htmlFor="validationCustom01"
+                        >
+                          Employee Id (eg.DHEMP0 your code)
+                        </Label>
+                        <Input
+                          value={employee.emp_id || ""}
+                          onChange={handleinput}
+                          name="emp_id"
+                          placeholder="Employee Code"
+                          type="text"
+                          className="form-control"
+                          id="validationCustom01"
+                        />
+                      </div>
+                    </Col>
                     <Col md="6">
                       <Label>First name</Label>
                       <Input
