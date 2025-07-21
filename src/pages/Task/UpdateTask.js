@@ -278,7 +278,8 @@ const AddTask = () => {
                     <Col md="6">
                       <div className="mb-2">
                         <a
-                          href={`http://localhost:8000/${formData.filePath}`}
+
+                          href={`${process.env.REACT_APP_API_BASE_URL}/attchment/${formData.filePath}`}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
