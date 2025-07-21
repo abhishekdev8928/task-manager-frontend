@@ -176,11 +176,7 @@ const Profile = () => {
                             id="customFile"
                           />
 
-                          <img
-                            src={`${process.env.REACT_APP_API_BASE_URL}/profile/${employee.profile_pic}`}
-                            alt="Profile"
-                            style={{ width: "100px", height: "100px" }}
-                          />
+                         
                         </div>
                       </div>
 
