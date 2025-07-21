@@ -175,8 +175,6 @@ const Profile = () => {
                             onChange={handleFileChange}
                             id="customFile"
                           />
-
-                         
                         </div>
                       </div>
 
