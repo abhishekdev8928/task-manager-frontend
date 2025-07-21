@@ -45,9 +45,7 @@ const CreateEmploye = () => {
     // Check each field and set error messages if missing
     if (!employee.name) newErrors.name = "Name is required";
     if (!employee.email) newErrors.email = "Email is required";
-
     if (!employee.role) newErrors.role = "Role is required";
-
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
