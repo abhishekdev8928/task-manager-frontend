@@ -122,7 +122,7 @@ const Profile = () => {
         <Breadcrumbs title="PROFILE" breadcrumbItems={breadcrumbItems} />
         <Row>
           <Col xl="6">
-            <Card className="h-100">
+            <Card className="">
               <CardBody>
                 <h2 className="card-title fs-5 mb-4">Profile Page</h2>
                 <form
@@ -199,7 +199,7 @@ const Profile = () => {
 
           {/* Reset Password Card */}
           <Col xl="6">
-            <Card className="h-100">
+            <Card className="">
               <CardBody>
                 <h2 className="card-title fs-5 mb-4">Reset Password</h2>
                 <form className="needs-validation">
