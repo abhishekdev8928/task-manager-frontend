@@ -280,7 +280,7 @@ const Profile = () => {
                           Current Password
                         </Label>
                         <Input
-                          type="text"
+                          type="password"
                           id="currentPass"
                           name="current_password"
                           value={user.current_password}
@@ -299,7 +299,7 @@ const Profile = () => {
                           New Password
                         </Label>
                         <Input
-                          type="text"
+                          type="password"
                           id="newPass"
                           name="new_password"
                           value={user.new_password}
@@ -318,7 +318,7 @@ const Profile = () => {
                           Confirm Password
                         </Label>
                         <Input
-                          type="text"
+                          type="password"
                           id="confirmPass"
                           name="confirm_password"
                           value={user.confirm_password}
