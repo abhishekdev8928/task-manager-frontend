@@ -25,6 +25,7 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("otpemail");
+    localStorage.removeItem("email");
     localStorage.removeItem("authUser");
       localStorage.removeItem("adminid");
      localStorage.removeItem("role");

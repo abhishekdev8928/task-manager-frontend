@@ -40,6 +40,8 @@ const LoginForm = () => {
         storeTokenInLS(res_data.token);
         localStorage.setItem("adminid", res_data.user.id);
         localStorage.setItem("role", res_data.user.role);
+        localStorage.setItem("email", res_data.user.email);
+
         console.log("res_data", res_data.user.id);
         console.log("res_data", res_data.user.role);
         localStorage.setItem("otpemail", JSON.stringify(res_data.email));
