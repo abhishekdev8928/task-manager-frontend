@@ -72,7 +72,7 @@ const UpdateEmploye = () => {
       const res_data = await response.json();
       const options = Array.isArray(res_data.msg)
         ? res_data.msg.map((item) => ({
-            value: item._id,
+           value: item.name?.trim() || item.name, // name as value not id
             label: item.name?.trim() || item.name,
           }))
         : [];
